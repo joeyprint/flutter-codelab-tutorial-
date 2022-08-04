@@ -99,7 +99,7 @@ class _GeneratorState extends State<Generator> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Saved',
                   style: TextStyle(
                     fontSize: 20,
