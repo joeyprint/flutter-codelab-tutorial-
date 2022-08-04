@@ -52,15 +52,6 @@ class _GeneratorState extends State<Generator> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // appBar: AppBar(
-      //   actions: [
-      //     IconButton(
-      //       icon: const Icon(Icons.list),
-      //       onPressed: _pushSaved,
-      //       tooltip: 'Saved Suggestions',
-      //     ),
-      //   ],
-      // ),
       child: Column(
         children: [
           ElevatedButton(
