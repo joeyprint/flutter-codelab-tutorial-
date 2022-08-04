@@ -12,7 +12,7 @@ class Generator extends StatefulWidget {
 class _GeneratorState extends State<Generator> {
   final _suggestions = <WordPair>[];
   final _saved = <WordPair>{};
-  final _subtitleFont = const TextStyle(fontSize: 18);
+  final _subtitleFont = const TextStyle(fontSize: 16);
 
   void _pushSaved() {
     Navigator.of(context).push(
@@ -54,14 +54,10 @@ class _GeneratorState extends State<Generator> {
     return Container(
       child: Column(
         children: [
-          ElevatedButton(
-            child: const Text('Go to name generate page'),
-            onPressed: _pushSaved,
-          ),
-          Flexible(
+          Expanded(
             child: ListView.builder(
-              scrollDirection: Axis.vertical,
               shrinkWrap: true,
+              primary: false,
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
               itemBuilder: (context, i) {
                 if (i.isOdd) return const Divider(height: 1);
@@ -95,6 +91,26 @@ class _GeneratorState extends State<Generator> {
                   },
                 );
               },
+            ),
+          ),
+          Container(
+            color: Colors.grey[100],
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Saved',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                OutlinedButton(
+                  child: const Text('Go to saved page'),
+                  onPressed: _pushSaved,
+                )
+              ],
             ),
           ),
         ],
