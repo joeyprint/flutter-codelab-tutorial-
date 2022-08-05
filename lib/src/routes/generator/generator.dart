@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
+import 'package:flutter_app_test/src/routes/save_generator/save_generator.dart';
+
 class Generator extends StatefulWidget {
   const Generator({Key? key}) : super(key: key);
   static const String routeName = '/generator';
@@ -28,22 +30,14 @@ class _GeneratorState extends State<Generator> {
               );
             },
           );
-          final divided = tiles.isNotEmpty
+          final savedList = tiles.isNotEmpty
               ? ListTile.divideTiles(
                   context: context,
                   tiles: tiles,
                 ).toList()
               : <Widget>[];
 
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Saved Suggestions'),
-            ),
-            body: ListView(
-              children: divided,
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
-            ),
-          );
+          return SaveGenerator(savedList: savedList ?? []);
         },
       ),
     );
