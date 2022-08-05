@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app_test/src/routes/landing/landing.dart';
+import 'package:flutter_app_test/src/routes/articles/articles.dart';
 import 'package:flutter_app_test/src/routes/generator/generator.dart';
+import 'package:flutter_app_test/src/routes/landing/landing.dart';
 import 'package:flutter_app_test/src/views/components/bottom_navbar/bottom_navbar.dart';
 
 class Home extends StatefulWidget {
@@ -15,11 +16,12 @@ class _HomeState extends State<Home> {
   int _activeNavigation = 0;
 
   final List<Widget> _pageList = [
+    Articles(),
     Landing(),
     Generator(),
   ];
 
-  final List<String> _pageNameList = ['Landing', 'Generator'];
+  final List<String> _pageNameList = ['Articles', 'Landing', 'Generator'];
 
   void _handleNavigation(int index) {
     setState(() {
@@ -39,6 +41,10 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BottomNavbar(
         items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.article),
+            label: 'Articles',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',

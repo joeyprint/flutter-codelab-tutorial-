@@ -24,14 +24,12 @@ class _LandingState extends State<Landing> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: ElevatedButton(
-          child: const Text('Go to name generate page'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Generator()),
-            );
-          },
+        child: const Text(
+          'Welcome Landing Page',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     );
