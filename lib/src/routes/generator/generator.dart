@@ -37,7 +37,7 @@ class _GeneratorState extends State<Generator> {
                 ).toList()
               : <Widget>[];
 
-          return SaveGenerator(savedList: savedList ?? []);
+          return SaveGenerator(savedList: savedList);
         },
       ),
     );
