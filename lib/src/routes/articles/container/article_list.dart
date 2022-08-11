@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../views/components/article_item/article_item.dart';
 
@@ -23,8 +24,8 @@ class Article {
   final String title;
   final String description;
   final String imageUrl;
-  final int createdAt;
-  final int updatedAt;
+  final String createdAt;
+  final String updatedAt;
 
   const Article({
     required this.id,
@@ -78,12 +79,14 @@ class _ArticleListState extends State<ArticleList> {
                     itemCount: articles?.length,
                     itemBuilder: (BuildContext context, int index) {
                       final article = Article.fromJson(articles![index]);
+
                       return ArticleItem(
-                        imageUrl: 'https://picsum.photos/200/300',
-                        // imageUrl: article.imageUrl,
-                        title: '${index + 1} ${article.title}',
+                        imageUrl:
+                            'https://picsum.photos/200/300', // Cannot get image url from fake.js
+                        title: article.title,
                         description: article.description,
-                        createdAt: '${DateTime.now()}',
+                        createdAt: DateFormat.yMMMMd()
+                            .format(DateTime.parse(article.createdAt)),
                       );
                     },
                   ),
