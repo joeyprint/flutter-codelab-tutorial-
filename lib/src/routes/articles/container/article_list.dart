@@ -1,52 +1,9 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:developer';
-import 'package:http/http.dart' as http;
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'package:flutter_app_test/src/domains/articles/articles_repository.dart';
+import 'package:flutter_app_test/src/domains/articles/models/article.dart';
 import '../../../views/components/article_item/article_item.dart';
-
-Future<List> fetchArticles() async {
-  final response = await http.get(
-      Uri.parse('https://5fb39fd2b6601200168f7a41.mockapi.io/api/articles'));
-  if (response.statusCode == 200) {
-    final List articleList = jsonDecode(response.body) as List<dynamic>;
-    return articleList;
-  } else {
-    throw Exception('Failed to load articles');
-  }
-}
-
-class Article {
-  final String id;
-  final String title;
-  final String description;
-  final String imageUrl;
-  final String createdAt;
-  final String updatedAt;
-
-  const Article({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.imageUrl,
-    required this.createdAt,
-    required this.updatedAt,
-  });
-
-  factory Article.fromJson(Map<String, dynamic> json) {
-    return Article(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      imageUrl: json['imageUrl'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-    );
-  }
-}
 
 class ArticleList extends StatefulWidget {
   const ArticleList({Key? key}) : super(key: key);
