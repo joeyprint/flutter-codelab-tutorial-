@@ -21,7 +21,8 @@ class ArticleItem extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Container(
+          Flexible(
+            flex: 0,
             child: Image(
               image: NetworkImage(imageUrl),
               width: 150,
@@ -29,39 +30,49 @@ class ArticleItem extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            constraints: BoxConstraints(minHeight: 150),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Flex(
-                  direction: Axis.vertical,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+          Flexible(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              constraints:
+                  BoxConstraints(minHeight: 150, maxWidth: double.infinity),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Flex(
+                    direction: Axis.vertical,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(description, style: TextStyle(fontSize: 16)),
-                  ],
-                ),
-                Flex(
-                  direction: Axis.vertical,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      createdAt,
-                      style: TextStyle(fontSize: 16, color: Colors.grey[500]),
-                    )
-                  ],
-                )
-              ],
+                      Text(
+                        description,
+                        style: TextStyle(fontSize: 16),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ],
+                  ),
+                  Flex(
+                    direction: Axis.vertical,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        createdAt,
+                        style: TextStyle(fontSize: 16, color: Colors.grey[500]),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ],
