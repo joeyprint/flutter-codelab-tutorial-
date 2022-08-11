@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import 'package:flutter_app_test/src/domains/articles/articles_repository.dart';
 import 'package:flutter_app_test/src/domains/articles/models/article.dart';
+import 'package:flutter_app_test/src/routes/article_details/article_details.dart';
 import '../../../views/components/article_item/article_item.dart';
 
 class ArticleList extends StatefulWidget {
@@ -44,6 +45,14 @@ class _ArticleListState extends State<ArticleList> {
                         description: article.description,
                         createdAt: DateFormat.yMMMMd()
                             .format(DateTime.parse(article.createdAt)),
+                        onCardTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ArticleDetails(),
+                            ),
+                          );
+                        },
                       );
                     },
                   ),
